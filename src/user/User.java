@@ -14,7 +14,7 @@ import java.util.Set;
 
 public class User {
     private static final Set<String> takenUsernames = new HashSet<>();
-    private static int userCount = 0;
+    private static int userCounts = 0;
     private String firstName;
     private String lastName;
     private String userName;
@@ -27,13 +27,13 @@ public class User {
         this.lastName = lastName;
         this.userName = generateUniqueUsername();
         this.books = new ArrayList<>();
-        userCount++;
+        userCounts++;
     }
 
     private String generateUniqueUsername() {
         String fullNameStr = firstName + " " + lastName;
         String fullNameConcatenated = firstName.charAt(0) + lastName;
-        String usernameWithCount = fullNameConcatenated + userCount;
+        String usernameWithCount = fullNameConcatenated + userCounts;
         String[] fullNameArr = fullNameStr.split(" ");
         String halfNames = fullNameArr[0].substring(0, fullNameArr[0].length() / 2)
                 + fullNameArr[1].substring(0, fullNameArr[1].length() / 2);
@@ -57,8 +57,8 @@ public class User {
 
         // If all else fails, append a number (user count) to make it unique
         while (takenUsernames.contains(usernameWithCount)) {
-            userCount++;  // Increment the count until we find a unique username
-            usernameWithCount = fullNameConcatenated + userCount;
+            userCounts++;  // Increment the count until we find a unique username
+            usernameWithCount = fullNameConcatenated + userCounts;
         }
         takenUsernames.add(usernameWithCount);
         return usernameWithCount;
@@ -70,16 +70,18 @@ public class User {
 
     public void showBook(Book book) {
         System.out.println(book.getTitle() + " by " + book.getAuthor(this));
-        System.out.println(book.getDescription());
-        System.out.println(book.getChapters());
+        System.out.println("Description: " + book.getDescription());
+        System.out.println();
+
+        for (Chapter chapter : book.getChapters()) {
+            System.out.println("Chapter " + chapter.getChapterNum());
+            System.out.println(chapter.getChapterName()
+                    + "\n \t" + chapter.getContent());
+        }
     }
 
-    public int getId() {
-        return userCount;
-    }
-
-    public int getUserCount() {
-        return userCount;
+    public int getUserCounts() {
+        return userCounts;
     }
 
     public void follow(User user) {

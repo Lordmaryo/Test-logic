@@ -23,6 +23,10 @@ public class Book {
         this.chapters.add(chapter);
     }
 
+    public void addChapter(Chapter chapter) {
+        this.chapters.add(chapter);
+    }
+
     public String getTitle() {
         return title;
     }

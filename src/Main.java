@@ -11,6 +11,7 @@
  * */
 
 
+import book.Book;
 import book.Chapter;
 import user.User;
 
@@ -47,15 +48,25 @@ public class Main {
         String overview = "This is a story about a star man being in the sky and his name is " +
                 "superman";
 
-        String chapContent = "It was a sunny day in metropolis in, inside a farm house the legend " +
-                "superman was born";
+        Chapter chapter1 = new Chapter(1, "The Star-man was born",
+                "It was a sunny day in Metropolis, inside a farmhouse, the legend Superman was born.");
 
-        userList.get(0).createBook("The Star-man", overview, new Chapter(
-                1,
-                "The Star-man was born",
-                chapContent
-        ));
+        // Chapter 2 content
+        Chapter chapter2 = new Chapter(2, "The Star-man's first flight",
+                "Superman discovered his ability to fly and soared across the sky, over the tall skyscrapers.");
 
-//        System.out.println(userList.get(0).showBook(userList.get(0)));
+        // Chapter 3 content
+        Chapter chapter3 = new Chapter(3, "Saving the day",
+                "Superman uses his powers to save the citizens of Metropolis from impending disaster.");
+
+
+        User user1 = userList.get(0);
+        user1.createBook("The Star-man", overview, chapter1);
+        Book user1Book = user1.getBooks().get(0);
+
+        user1Book.addChapter(chapter2);
+        user1Book.addChapter(chapter3);
+
+        user1.showBook(user1Book);
     }
 }

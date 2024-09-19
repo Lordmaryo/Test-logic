@@ -4,8 +4,8 @@ import user.User;
 
 import java.util.ArrayList;
 import java.util.List;
-
 public class Chapter {
+    private final int chapterNum;  // Chapter number, starting from 1
     private String chapterName;
     private String content;
     private boolean isLiked;
@@ -13,11 +13,16 @@ public class Chapter {
     private List<String> comments;
 
     public Chapter(int chapterNum, String chapterName, String content) {
+        this.chapterNum = chapterNum;
         this.chapterName = chapterName;
         this.content = content;
         this.isLiked = false;
         this.likes = new ArrayList<>();
         this.comments = new ArrayList<>();
+    }
+
+    public int getChapterNum() {
+        return chapterNum;
     }
 
     public String getChapterName() {
@@ -37,7 +42,7 @@ public class Chapter {
     }
 
     public boolean isLiked() {
-        return false;
+        return isLiked;
     }
 
     public void setLiked(boolean liked) {
@@ -81,7 +86,7 @@ public class Chapter {
     }
 
     public void deleteComment(int index) {
-        if (index > 0 && index < comments.size()) {
+        if (index >= 0 && index < comments.size()) {
             comments.remove(index);
         }
     }
