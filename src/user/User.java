@@ -39,6 +39,7 @@ public class User {
                 + fullNameArr[1].substring(0, fullNameArr[1].length() / 2);
 
         String noSpaceFullName = fullNameStr.replaceAll("\\s+", "");
+        String fullNameWithUnderScore = fullNameStr.replaceAll("\\s+", "_");
 
         if (!takenUsernames.contains(firstName)) {
             takenUsernames.add(firstName);
@@ -46,6 +47,9 @@ public class User {
         } else if (!takenUsernames.contains(noSpaceFullName)) {
             takenUsernames.add(noSpaceFullName);
             return noSpaceFullName;
+        } else if (!takenUsernames.contains(fullNameWithUnderScore)) {
+            takenUsernames.add(fullNameWithUnderScore);
+            return fullNameWithUnderScore;
         } else if (!takenUsernames.contains(fullNameConcatenated)) {
             takenUsernames.add(fullNameConcatenated);
             return fullNameConcatenated;
@@ -134,8 +138,10 @@ public class User {
     }
 
     public void setUserName(String userName) {
+        String sanitizedUserName = userName.replaceAll("[^a-zA-Z0-9_]", "");
         if (!takenUsernames.contains(userName)) {
-            this.userName = userName;
+            this.userName = sanitizedUserName;
+            takenUsernames.add(sanitizedUserName);
         }
     }
 

@@ -62,6 +62,8 @@ public class Main {
 
 
         User user1 = userList.get(0);
+        user1.setUserName("John *99/;_fr@!");
+
         user1.createBook("The Star-man", overview, chapter1);
         Book user1Book = user1.getBooks().get(0);
 
