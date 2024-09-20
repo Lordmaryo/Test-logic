@@ -1,10 +1,6 @@
 package book;
 
 
-/*
- * Todo - make users like and comment on a chapter
- */
-
 import user.User;
 
 import java.util.ArrayList;

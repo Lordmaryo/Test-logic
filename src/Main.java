@@ -18,10 +18,6 @@ import user.User;
 import java.util.ArrayList;
 import java.util.List;
 
-// TODO - Make setUserName() only letters and numbers
-// follow functionalities have been tested.
-// users can now add books and chapters.
-
 public class Main {
     public static void main(String[] args) {
         List<User> userList = new ArrayList<>();

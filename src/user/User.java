@@ -8,10 +8,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/*
- * Todo - make user Make setUserName() accept only letters and numbers
- */
-
 public class User {
     private static final Set<String> takenUsernames = new HashSet<>();
     private static int userCounts = 0;
