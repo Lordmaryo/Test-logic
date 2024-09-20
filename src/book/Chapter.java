@@ -3,13 +3,16 @@ package book;
 import user.User;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
+
 public class Chapter {
     private final int chapterNum;  // Chapter number, starting from 1
     private String chapterName;
     private String content;
     private boolean isLiked;
-    private List<User> likes;
+    private Set<User> likes;
     private List<String> comments;
 
     public Chapter(int chapterNum, String chapterName, String content) {
@@ -17,7 +20,7 @@ public class Chapter {
         this.chapterName = chapterName;
         this.content = content;
         this.isLiked = false;
-        this.likes = new ArrayList<>();
+        this.likes = new HashSet<>();
         this.comments = new ArrayList<>();
     }
 
@@ -65,11 +68,15 @@ public class Chapter {
         }
     }
 
-    public List<User> getLikes() {
+    public Set<User> getLikes() {
         return likes;
     }
 
-    public void setLikes(List<User> likes) {
+    public List<User> getAllLikes() {
+        return new ArrayList<>(likes);  // Make a copy to avoid modifying the original list
+    }
+
+    public void setLikes(Set<User> likes) {
         this.likes = likes;
     }
 

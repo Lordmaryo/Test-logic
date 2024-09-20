@@ -2,7 +2,6 @@ package book;
 
 
 /*
- * Todo - Make user be able to write books with its own chapters and its content
  * Todo - make users like and comment on a chapter
  */
 

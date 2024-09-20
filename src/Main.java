@@ -20,6 +20,7 @@ import java.util.List;
 
 // TODO - Make setUserName() only letters and numbers
 // follow functionalities have been tested.
+// users can now add books and chapters.
 
 public class Main {
     public static void main(String[] args) {
@@ -67,6 +68,31 @@ public class Main {
         user1Book.addChapter(chapter2);
         user1Book.addChapter(chapter3);
 
+        Chapter user1FirstChapter = user1.getBooks().get(0).getChapters().get(0);
+
+        System.out.println("Those that liked");
+        for (User user : userList) {
+            user1FirstChapter.likeChapter(user);
+        }
+        user1FirstChapter.getLikes().forEach(user -> System.out.println(user.getUserName()));
+
         user1.showBook(user1Book);
+
+        System.out.println("Comments");
+        for (User user : userList) {
+            String comment = user.getUserName() + ": This is the best chapter of John's book!";
+            user1FirstChapter.addComment(comment);
+        }
+
+        user1FirstChapter.getComments().forEach(System.out::println);
+
+
+
+        System.out.println("Chapter 1 of John's book now has " + user1FirstChapter.getLikes().size() +
+                " likes"
+        );
+        System.out.println("Chapter 1 of John's book now has " + user1FirstChapter.getComments().size() +
+                " Comments"
+        );
     }
 }

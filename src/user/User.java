@@ -40,7 +40,6 @@ public class User {
 
         String noSpaceFullName = fullNameStr.replaceAll("\\s+", "");
 
-        // Try generating a username with different strategies
         if (!takenUsernames.contains(firstName)) {
             takenUsernames.add(firstName);
             return firstName;
@@ -57,7 +56,7 @@ public class User {
 
         // If all else fails, append a number (user count) to make it unique
         while (takenUsernames.contains(usernameWithCount)) {
-            userCounts++;  // Increment the count until we find a unique username
+            userCounts++;
             usernameWithCount = fullNameConcatenated + userCounts;
         }
         takenUsernames.add(usernameWithCount);
